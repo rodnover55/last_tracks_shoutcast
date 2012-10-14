@@ -40,7 +40,7 @@ class LastTrackRequest {
 		$curl = curl_init($this->url);
 
 		if (!$curl) {
-			$songs['errors'][] = 'Cannot init curl.';
+			$songs['errors'][] = __('Cannot init curl.', LastTrackPlugin::domain());
 			return $songs;
 		}
 
@@ -58,7 +58,8 @@ class LastTrackRequest {
 
 		$wrong_key = $this->set_options($curl, $options);
 		if (isset($wrong_key)) {
-			$songs['errors'][] = "Cannot set option $key: " . curl_error($curl);
+			$songs['errors'][] = printf(__("Cannot set option '%s': %s", LastTrackPlugin::domain()),
+					curl_error($curl));
 			curl_close($curl);
 			return $songs;
 		}
@@ -66,7 +67,8 @@ class LastTrackRequest {
 		$xml = curl_exec($curl);
 
 		if (!isset($xml)) {
-			$songs['errors'][] = "Cannot exec curl: " . curl_error($curl);
+			$songs['errors'][] = printf(__("Cannot exec curl: %s", LastTrackPlugin::domain()),
+					curl_error($curl));
 			curl_close($curl);
 			return $songs;
 		}
@@ -75,7 +77,7 @@ class LastTrackRequest {
 
 		switch ($status) {
 			case 401:
-				$songs['errors'][] = 'Unauthorized.';
+				$songs['errors'][] = __('Unauthorized.', LastTrackPlugin::domain());
 				curl_close($curl);
 				return $songs;
 			case 200:

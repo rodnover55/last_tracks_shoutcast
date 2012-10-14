@@ -6,8 +6,10 @@ require_once "elements-library.php";
 
 class LastTrackWidget {
 	public static function init() {
-		wp_register_sidebar_widget(LastTrackPlugin::PREFIX, 'Последние треки', array(__CLASS__, 'draw'));
-		wp_register_widget_control(LastTrackPlugin::PREFIX, 'Последние треки', array(__CLASS__, 'settings'));
+		wp_register_sidebar_widget(LastTrackPlugin::PREFIX, __('Shoutcast last tracks',
+				LastTrackPlugin::domain()), array(__CLASS__, 'draw'));
+		wp_register_widget_control(LastTrackPlugin::PREFIX, __('Shoutcast last tracks',
+				LastTrackPlugin::domain()), array(__CLASS__, 'settings'));
 	}
 
 	public static function draw($args) {
@@ -51,26 +53,27 @@ class LastTrackWidget {
 
 
 		$options = array(
-				LastTrackPlugin::INFORMATION_NONE => 'Нет',
-				LastTrackPlugin::INFORMATION_MESSAGE => 'Сообщение',
-				LastTrackPlugin::INFORMATION_FULL => 'Полная');
+				LastTrackPlugin::INFORMATION_NONE => __('None', LastTrackPlugin::domain()),
+				LastTrackPlugin::INFORMATION_MESSAGE => __('Specified message',
+						LastTrackPlugin::domain()),
+				LastTrackPlugin::INFORMATION_FULL => __('Full', LastTrackPlugin::domain()));
 
-		echo ElementsLibrary::draw_label('Оповещения об ошибках');
+		echo ElementsLibrary::draw_label(__('Error notification', LastTrackPlugin::domain()));
 		echo ElementsLibrary::draw_select(LastTrackPlugin::get_name_with_prefix('information'),
 				$options, LastTrackPlugin::get_option('information'));
-		echo ElementsLibrary::draw_label('Сообщение об ошибке');
+		echo ElementsLibrary::draw_label(__('Error message', LastTrackPlugin::domain()));
 		echo ElementsLibrary::draw_text(LastTrackPlugin::get_name_with_prefix('information_message'),
 				LastTrackPlugin::get_option('information_message'));
-		echo ElementsLibrary::draw_label('Заголовок');
+		echo ElementsLibrary::draw_label(__('Title', LastTrackPlugin::domain()));
 		echo ElementsLibrary::draw_text(LastTrackPlugin::get_name_with_prefix('title'),
 				LastTrackPlugin::get_option('title'));
-		echo ElementsLibrary::draw_label('Заголовок текущей');
+		echo ElementsLibrary::draw_label(__('Current track title', LastTrackPlugin::domain()));
 		echo ElementsLibrary::draw_text(LastTrackPlugin::get_name_with_prefix('current_song'),
 				LastTrackPlugin::get_option('current_song'));
-		echo ElementsLibrary::draw_label('Заголовок последних');
+		echo ElementsLibrary::draw_label(__('Last tracks title', LastTrackPlugin::domain()));
 		echo ElementsLibrary::draw_text(LastTrackPlugin::get_name_with_prefix('last_songs'),
 				LastTrackPlugin::get_option('last_songs'));
-		echo ElementsLibrary::draw_label('Количество песен');
+		echo ElementsLibrary::draw_label(__('Count last songs', LastTrackPlugin::domain()));
 		echo ElementsLibrary::draw_text(LastTrackPlugin::get_name_with_prefix('count_songs'),
 				LastTrackPlugin::get_option('count_songs'));
 	}

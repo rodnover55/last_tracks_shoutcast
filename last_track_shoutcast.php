@@ -6,6 +6,7 @@ Description: Show last track from shoutcast
 Version: 1.0.0
 Author: rodnover
 Author URI:
+License: GPL
 */
 
 include_once 'last_track_plugin.php';

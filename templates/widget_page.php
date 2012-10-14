@@ -13,7 +13,7 @@
   			break;
   		case LastTrackPlugin::INFORMATION_FULL:
           foreach($songs['errors'] as $error) { ?>
-            <div>Errors:
+            <div> <?php _e('Errors:', LastTrackPlugin::domain()) ?>
             <?php echo $error; ?><br/>
             </div>
             <?php

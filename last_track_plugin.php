@@ -12,7 +12,12 @@ class LastTrackPlugin {
 
 	private static $options;
 
+	public static function domain() {
+		return LastTrackPlugin::PREFIX;
+	}
+
 	public static function activate() {
+		load_plugin_textdomain(LastTrackPlugin::domain(), false, dirname(plugin_basename(__FILE__)) . '/languages/');
 		register_activation_hook(__FILE__, array(__CLASS__, 'install'));
 		add_action('plugins_loaded', array(__CLASS__, 'loaded'));
 	}
