@@ -10,11 +10,10 @@ class LastTrackWidget {
 				LastTrackPlugin::domain()), array(__CLASS__, 'draw'));
 		wp_register_widget_control(LastTrackPlugin::PREFIX, __('Shoutcast last tracks',
 				LastTrackPlugin::domain()), array(__CLASS__, 'settings'));
+		add_action('wp_ajax_' . LastTrackPlugin::PREFIX, array(__CLASS__, 'ajax'));
 	}
 
-	public static function draw($args) {
-		extract($args);
-
+	private static function echo_template() {
 		$connect_options = array(
 				'url' => LastTrackPlugin::get_option('url'),
 				'require_auth' => (LastTrackPlugin::get_option('require_auth') != ''),
@@ -26,7 +25,6 @@ class LastTrackWidget {
 
 		$information = LastTrackPlugin::get_option('information');
 		$information_message = LastTrackPlugin::get_option('information_message');
-		$title = LastTrackPlugin::get_option('title');
 		$current_song = LastTrackPlugin::get_option('current_song');
 		$last_songs = LastTrackPlugin::get_option('last_songs');
 		$count_songs = LastTrackPlugin::get_option('count_songs');
@@ -35,6 +33,34 @@ class LastTrackWidget {
 		$songs = $lt_request->get_last_songs($count_songs);
 
 		include 'templates/widget_page.php';
+	}
+
+	private static function get_template() {
+		ob_start();
+
+		LastTrackWidget::echo_template();
+
+		$html = ob_get_contents();
+		ob_end_clean();
+
+		return $html;
+	}
+
+	public static function draw($args) {
+		extract($args);
+
+		echo $before_widget;
+		echo $before_title;
+		echo LastTrackPlugin::get_option('title');
+		echo $after_title;
+
+		LastTrackWidget::echo_template();
+
+		wp_enqueue_script("jquery");
+		wp_enqueue_script(LastTrackPlugin::get_name_with_prefix('widget_js'),
+				plugins_url('templates/js/widget.js', __FILE__), array('jquery'));
+
+		echo $after_widget;
 	}
 
 	public static function settings() {
@@ -76,5 +102,12 @@ class LastTrackWidget {
 		echo ElementsLibrary::draw_label(__('Count last songs', LastTrackPlugin::domain()));
 		echo ElementsLibrary::draw_text(LastTrackPlugin::get_name_with_prefix('count_songs'),
 				LastTrackPlugin::get_option('count_songs'));
+	}
+
+	public static function ajax() {
+		$ajax = array(
+			'title' => LastTrackPlugin::get_option('title'),
+			'content' => LastTrackWidget::get_template());
+		exit(json_encode($ajax));
 	}
 }
