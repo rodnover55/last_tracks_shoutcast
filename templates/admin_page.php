@@ -1,5 +1,3 @@
-<?php require_once "last_track_plugin.php"; ?>
-
 <div class="wrap">
   <div class="icon32" id="icon-options-general"><br></div>
   <h2><?php echo 'Страница параметров'; ?></h2>

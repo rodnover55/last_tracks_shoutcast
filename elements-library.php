@@ -1,6 +1,9 @@
 <?php
 
 class ElementsLibrary {
+	public static function draw_label($caption) {
+		return "<div>$caption</div>";
+	}
 	public static function draw_input($tags) {
 		$html = '<input ';
 		foreach ($tags as $key => $value) {

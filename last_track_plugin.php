@@ -1,7 +1,7 @@
 <?php
 
 require_once "last_track_admin.php";
-// require_once "last_track_widget.php";
+require_once "last_track_widget.php";
 
 class LastTrackPlugin {
 
@@ -29,16 +29,30 @@ class LastTrackPlugin {
 				get_option(LastTrackPlugin::get_name_with_prefix('login'), '');
 		LastTrackPlugin::$options[LastTrackPlugin::get_name_with_prefix('password')] =
 				get_option(LastTrackPlugin::get_name_with_prefix('password'), '');
+		LastTrackPlugin::$options[LastTrackPlugin::get_name_with_prefix('connect_timeout')] =
+				get_option(LastTrackPlugin::get_name_with_prefix('connect_timeout'), '');
+				LastTrackPlugin::$options[LastTrackPlugin::get_name_with_prefix('timeout')] =
+				get_option(LastTrackPlugin::get_name_with_prefix('timeout'), '');
 		LastTrackPlugin::$options[LastTrackPlugin::get_name_with_prefix('exclude')] =
 				get_option(LastTrackPlugin::get_name_with_prefix('exclude'), null);
 		LastTrackPlugin::$options[LastTrackPlugin::get_name_with_prefix('information')] =
 				get_option(LastTrackPlugin::get_name_with_prefix('information'),
 						LastTrackPlugin::INFORMATION_FULL);
+		LastTrackPlugin::$options[LastTrackPlugin::get_name_with_prefix('information_message')] =
+			get_option(LastTrackPlugin::get_name_with_prefix('information_message'), null);
+		LastTrackPlugin::$options[LastTrackPlugin::get_name_with_prefix('title')] =
+			get_option(LastTrackPlugin::get_name_with_prefix('title'), null);
+		LastTrackPlugin::$options[LastTrackPlugin::get_name_with_prefix('current_song')] =
+			get_option(LastTrackPlugin::get_name_with_prefix('current_song'), null);
+		LastTrackPlugin::$options[LastTrackPlugin::get_name_with_prefix('last_songs')] =
+			get_option(LastTrackPlugin::get_name_with_prefix('last_songs'), null);
+		LastTrackPlugin::$options[LastTrackPlugin::get_name_with_prefix('count_songs')] =
+			get_option(LastTrackPlugin::get_name_with_prefix('count_songs'), null);
 
 		add_action('admin_init', array('LastTrackAdmin', 'admin_init'));
 		add_action('admin_menu', array('LastTrackAdmin', 'admin_menu'));
 
-// 		add_action('init', array(LastTrackWidget, 'process_post'));
+		add_action('init', array('LastTrackWidget', 'init'));
 	}
 
 	public static function get_name_with_prefix($name) {
@@ -46,6 +60,6 @@ class LastTrackPlugin {
 	}
 
 	public static function get_option($option_name) {
-		return LastTrackPlugin::$options[LastTrackPlugin::get_name_with_prefix($option_name)];
+		return get_option(LastTrackPlugin::get_name_with_prefix($option_name));
 	}
 }

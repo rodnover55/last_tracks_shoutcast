@@ -50,16 +50,15 @@ class LastTrackAdmin {
 				LastTrackPlugin::get_name_with_prefix('options'),
 				LastTrackPlugin::get_name_with_prefix('general'));
 
-		$options = array(
-				LastTrackPlugin::INFORMATION_NONE => 'Нет',
-				LastTrackPlugin::INFORMATION_MESSAGE => 'Сообщение',
-				LastTrackPlugin::INFORMATION_FULL => 'Полная');
+		add_settings_field(LastTrackPlugin::get_name_with_prefix('connect_timeout'), 'Connect timeout',
+				ElementsLibrary::echo_text(LastTrackPlugin::get_name_with_prefix('connect_timeout'),
+						LastTrackPlugin::get_option('connect_timeout')),
+				LastTrackPlugin::get_name_with_prefix('options'),
+				LastTrackPlugin::get_name_with_prefix('general'));
 
-		add_settings_field(LastTrackPlugin::get_name_with_prefix('information'),
-				'Оповещения об ошибках',
-				ElementsLibrary::echo_select(
-						LastTrackPlugin::get_name_with_prefix('information'), $options,
-						LastTrackPlugin::get_option('information')),
+		add_settings_field(LastTrackPlugin::get_name_with_prefix('timeout'), 'Timeout',
+				ElementsLibrary::echo_text(LastTrackPlugin::get_name_with_prefix('timeout'),
+						LastTrackPlugin::get_option('timeout')),
 				LastTrackPlugin::get_name_with_prefix('options'),
 				LastTrackPlugin::get_name_with_prefix('general'));
 
@@ -74,7 +73,9 @@ class LastTrackAdmin {
 		register_setting(LastTrackPlugin::PREFIX,
 				LastTrackPlugin::get_name_with_prefix('exclude'));
 		register_setting(LastTrackPlugin::PREFIX,
-				LastTrackPlugin::get_name_with_prefix('information'));
+				LastTrackPlugin::get_name_with_prefix('connect_timeout'));
+		register_setting(LastTrackPlugin::PREFIX,
+				LastTrackPlugin::get_name_with_prefix('timeout'));
 	}
 
 	public static function admin_menu() {
@@ -83,6 +84,6 @@ class LastTrackAdmin {
 	}
 
 	public static function get_options() {
-		include "admin_page.php";
+		include "templates/admin_page.php";
 	}
 }
