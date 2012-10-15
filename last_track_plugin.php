@@ -53,6 +53,8 @@ class LastTrackPlugin {
 			get_option(LastTrackPlugin::get_name_with_prefix('last_songs'), null);
 		LastTrackPlugin::$options[LastTrackPlugin::get_name_with_prefix('count_songs')] =
 			get_option(LastTrackPlugin::get_name_with_prefix('count_songs'), null);
+		LastTrackPlugin::$options[LastTrackPlugin::get_name_with_prefix('href')] =
+			get_option(LastTrackPlugin::get_name_with_prefix('href'), '');
 
 		add_action('admin_init', array('LastTrackAdmin', 'admin_init'));
 		add_action('admin_menu', array('LastTrackAdmin', 'admin_menu'));

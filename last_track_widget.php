@@ -28,6 +28,7 @@ class LastTrackWidget {
 		$current_song = LastTrackPlugin::get_option('current_song');
 		$last_songs = LastTrackPlugin::get_option('last_songs');
 		$count_songs = LastTrackPlugin::get_option('count_songs');
+		$href = LastTrackPlugin::get_option('href');
 
 		$lt_request = new LastTrackRequest($connect_options);
 		$songs = $lt_request->get_last_songs($count_songs);
@@ -69,7 +70,8 @@ class LastTrackWidget {
 				LastTrackPlugin::get_name_with_prefix('title'),
 				LastTrackPlugin::get_name_with_prefix('current_song'),
 				LastTrackPlugin::get_name_with_prefix('last_songs'),
-				LastTrackPlugin::get_name_with_prefix('count_songs'));
+				LastTrackPlugin::get_name_with_prefix('count_songs'),
+				LastTrackPlugin::get_name_with_prefix('href'));
 
 		foreach($post_options as $option) {
 			if (!empty($_REQUEST[$option])) {
@@ -102,6 +104,9 @@ class LastTrackWidget {
 		echo ElementsLibrary::draw_label(__('Count last songs', LastTrackPlugin::domain()));
 		echo ElementsLibrary::draw_text(LastTrackPlugin::get_name_with_prefix('count_songs'),
 				LastTrackPlugin::get_option('count_songs'));
+		echo ElementsLibrary::draw_label(__('Link to radio', LastTrackPlugin::domain()));
+		echo ElementsLibrary::draw_text(LastTrackPlugin::get_name_with_prefix('href'),
+				LastTrackPlugin::get_option('href'));
 	}
 
 	public static function ajax() {

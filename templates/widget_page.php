@@ -1,4 +1,5 @@
 <?php
+  include_once "text_with_link.php";
   if (isset($songs['errors'])) {
   	switch ($information) {
   		case LastTrackPlugin::INFORMATION_MESSAGE:
@@ -19,12 +20,12 @@
     }
     else {?>
       <div>
-        <div class="current_song_title"><?php echo $current_song; ?><br/>
-          <div class="current_song"><?php echo $songs['current']; ?></div>
+        <div class="current_song_title"><?php text_with_link($href, $current_song); ?><br/>
+          <div class="current_song"><?php text_with_link($href, $songs['current']); ?></div>
         </div><br/>
-      <div><div class="last_songs_title"><?php echo $last_songs; ?></div>
+      <div><div class="last_songs_title"><?php text_with_link($href, $last_songs); ?></div>
       <?php foreach ($songs['lasts'] as $song) { ?>
-        <div class="last_song"><?php echo $song; ?></div>
+        <div class="last_song"><?php text_with_link($href, $song); ?></div>
         <?php
       } ?>
       </div>
