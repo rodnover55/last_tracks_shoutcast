@@ -122,5 +122,6 @@ class LastTrackRequest {
 
 	private function parse_title($title) {
 		$track = array();
+		return $title;
 	}
 }
