@@ -124,26 +124,30 @@ class LastTrackRequest {
 		foreach ($data->SONGHISTORY->SONG as $song) {
 			$title = strval($song->TITLE);
 
+			$is_exclude = false;
+			foreach ($this->exclude as $test) {
+				if (strpos(mb_strtoupper($title), mb_strtoupper($test)) !== false) {
+					$is_exclude = true;
+					break;
+				}
+			}
+
+			if ($is_exclude) {
+				continue;
+			}
+
 			if ($counter == 0) {
 				$songs['current'] = $this->parse_title($title);
 				++$counter;
 				continue;
 			}
 
-			$is_exclude = false;
-			foreach ($this->exclude as $test) {
-				if (strpos($title, $test) !== false) {
-					$is_exclude = true;
-					break;
-				}
+			$songs['lasts'][] = $this->parse_title($title);
+			if (($count > 0) && ($count == $counter)) {
+				break;
 			}
-			if (!$is_exclude) {
-				$songs['lasts'][] = $this->parse_title($title);
-				if (($count > 0) && ($count == $counter)) {
-					break;
-				}
-				++$counter;
-			}
+			++$counter;
+
 		}
 		return $songs;
 	}
