@@ -13,7 +13,6 @@
             </div>
             <?php
           }
-          echo $after_widget;
           break;
     	}
     	return;
