@@ -52,10 +52,12 @@ class LastTrackRequest {
 
 			$this->tags[] = substr($symbol, 1);
 			$symbol = next($matches_symbol[0]);
-			$this->regex .= '(.+)';
 
 			if ($symbol === false) {
+				$this->regex .= '(.+)';
 				break;
+			} else {
+				$this->regex .= '(.+?)';
 			}
 		}
 		$this->regex .= '/u';
