@@ -9,6 +9,10 @@ class LastTrackAdmin {
 				__('General', LastTrackPlugin::domain()), function(){},
 				LastTrackPlugin::get_name_with_prefix('options'));
 
+		add_settings_section(LastTrackPlugin::get_name_with_prefix('parsing'),
+				__('Parsing config', LastTrackPlugin::domain()), function(){},
+				LastTrackPlugin::get_name_with_prefix('options'));
+
 		add_settings_field(LastTrackPlugin::get_name_with_prefix('url'),
 				__('Link', LastTrackPlugin::domain()),
 				ElementsLibrary::echo_text(LastTrackPlugin::get_name_with_prefix('url'),
@@ -47,13 +51,6 @@ class LastTrackAdmin {
 				LastTrackPlugin::get_name_with_prefix('options'),
 				LastTrackPlugin::get_name_with_prefix('general'));
 
-		add_settings_field(LastTrackPlugin::get_name_with_prefix('exclude'),
-				__('Excludes', LastTrackPlugin::domain()),
-				ElementsLibrary::echo_text(LastTrackPlugin::get_name_with_prefix('exclude'),
-						LastTrackPlugin::get_option('exclude')),
-				LastTrackPlugin::get_name_with_prefix('options'),
-				LastTrackPlugin::get_name_with_prefix('general'));
-
 		add_settings_field(LastTrackPlugin::get_name_with_prefix('connect_timeout'),
 				__('Connect timeout', LastTrackPlugin::domain()),
 				ElementsLibrary::echo_text(LastTrackPlugin::get_name_with_prefix('connect_timeout'),
@@ -68,6 +65,20 @@ class LastTrackAdmin {
 				LastTrackPlugin::get_name_with_prefix('options'),
 				LastTrackPlugin::get_name_with_prefix('general'));
 
+		add_settings_field(LastTrackPlugin::get_name_with_prefix('parse_format'),
+				__('Parse format', LastTrackPlugin::domain()),
+				ElementsLibrary::echo_text(LastTrackPlugin::get_name_with_prefix('parse_format'),
+						LastTrackPlugin::get_option('parse_format')),
+				LastTrackPlugin::get_name_with_prefix('options'),
+				LastTrackPlugin::get_name_with_prefix('parsing'));
+
+		add_settings_field(LastTrackPlugin::get_name_with_prefix('exclude'),
+				__('Excludes', LastTrackPlugin::domain()),
+				ElementsLibrary::echo_text(LastTrackPlugin::get_name_with_prefix('exclude'),
+						LastTrackPlugin::get_option('exclude')),
+				LastTrackPlugin::get_name_with_prefix('options'),
+				LastTrackPlugin::get_name_with_prefix('parsing'));
+
 		register_setting(LastTrackPlugin::PREFIX,
 				LastTrackPlugin::get_name_with_prefix('url'));
 		register_setting(LastTrackPlugin::PREFIX,
@@ -77,11 +88,14 @@ class LastTrackAdmin {
 		register_setting(LastTrackPlugin::PREFIX,
 				LastTrackPlugin::get_name_with_prefix('password'));
 		register_setting(LastTrackPlugin::PREFIX,
-				LastTrackPlugin::get_name_with_prefix('exclude'));
-		register_setting(LastTrackPlugin::PREFIX,
 				LastTrackPlugin::get_name_with_prefix('connect_timeout'));
 		register_setting(LastTrackPlugin::PREFIX,
 				LastTrackPlugin::get_name_with_prefix('timeout'));
+
+		register_setting(LastTrackPlugin::PREFIX,
+				LastTrackPlugin::get_name_with_prefix('exclude'));
+		register_setting(LastTrackPlugin::PREFIX,
+				LastTrackPlugin::get_name_with_prefix('parse_format'));
 	}
 
 	public static function admin_menu() {

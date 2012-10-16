@@ -16,6 +16,7 @@ class LastTrackRequest {
 		}
 		return null;
 	}
+
 	function __construct($connect_options) {
 		$this->url = $connect_options['url'];
 		$this->is_require_auth = $connect_options['require_auth'];
@@ -96,7 +97,7 @@ class LastTrackRequest {
 			$title = strval($song->TITLE);
 
 			if ($counter == 0) {
-				$songs['current'] = $title;
+				$songs['current'] = $this->parse_title($title);
 				++$counter;
 				continue;
 			}
@@ -109,7 +110,7 @@ class LastTrackRequest {
 				}
 			}
 			if (!$is_exclude) {
-				$songs['lasts'][] = $title;
+				$songs['lasts'][] = $this->parse_title($title);
 				if (($count > 0) && ($count == $counter)) {
 					break;
 				}
@@ -117,5 +118,9 @@ class LastTrackRequest {
 			}
 		}
 		return $songs;
+	}
+
+	private function parse_title($title) {
+		$track = array();
 	}
 }

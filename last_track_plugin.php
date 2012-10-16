@@ -38,8 +38,12 @@ class LastTrackPlugin {
 				get_option(LastTrackPlugin::get_name_with_prefix('connect_timeout'), '');
 				LastTrackPlugin::$options[LastTrackPlugin::get_name_with_prefix('timeout')] =
 				get_option(LastTrackPlugin::get_name_with_prefix('timeout'), '');
+
 		LastTrackPlugin::$options[LastTrackPlugin::get_name_with_prefix('exclude')] =
 				get_option(LastTrackPlugin::get_name_with_prefix('exclude'), null);
+		LastTrackPlugin::$options[LastTrackPlugin::get_name_with_prefix('parse_format')] =
+			get_option(LastTrackPlugin::get_name_with_prefix('parse_format'), '%a - %t');
+
 		LastTrackPlugin::$options[LastTrackPlugin::get_name_with_prefix('information')] =
 				get_option(LastTrackPlugin::get_name_with_prefix('information'),
 						LastTrackPlugin::INFORMATION_FULL);
@@ -56,6 +60,7 @@ class LastTrackPlugin {
 		LastTrackPlugin::$options[LastTrackPlugin::get_name_with_prefix('href')] =
 			get_option(LastTrackPlugin::get_name_with_prefix('href'), '');
 
+
 		add_action('admin_init', array('LastTrackAdmin', 'admin_init'));
 		add_action('admin_menu', array('LastTrackAdmin', 'admin_menu'));
 
@@ -67,6 +72,7 @@ class LastTrackPlugin {
 	}
 
 	public static function get_option($option_name) {
-		return get_option(LastTrackPlugin::get_name_with_prefix($option_name));
+		return get_option(LastTrackPlugin::get_name_with_prefix($option_name),
+				LastTrackPlugin::$options[LastTrackPlugin::get_name_with_prefix($option_name)]);
 	}
 }
