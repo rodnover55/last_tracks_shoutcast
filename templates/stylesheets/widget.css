@@ -11,3 +11,7 @@
 .current_song_track, .last_song_track {
 	text-transform: capitalize;
 }
+
+.last_songs {
+	list-style-type: disc;
+}

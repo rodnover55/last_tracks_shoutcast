@@ -29,7 +29,7 @@
         <div><div class="last_songs_title"><?php echo $last_songs; ?></div>
           <ul>
           <?php foreach ($songs['lasts'] as $song) { ?>
-            <li>
+            <li class="last_songs">
               <div class="last_song_artist"><?php echo $song['artist']; ?></div>
               <div class="last_song_track"><?php echo $song['track']; ?></div>
             </li>
