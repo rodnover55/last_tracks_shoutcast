@@ -7,6 +7,8 @@ class LastTrackRequest {
 	private $password;
 	private $connect_timeout;
 	private $timeout;
+	private $tags;
+	private $regex;
 
 	private function set_options($curl, $options) {
 		foreach ($options as $key => $value) {
@@ -33,6 +35,30 @@ class LastTrackRequest {
 			($connect_options['timeout']):(5);
 
 		$this->exclude = explode(';', $connect_options['exclude']);
+		$parse_format = $connect_options['parse_format'];
+
+		$this->matches = preg_split('/%\\w+/u', $parse_format);
+		$matches_symbol = array();
+		preg_match_all('/(%\w+)/', $parse_format, $matches_symbol);
+
+		$symbol = reset($matches_symbol[0]);
+		$this->regex = '/';
+		$this->tags = array();
+		foreach ($this->matches as $key => $value) {
+			if (!empty($value)) {
+				$this->regex .= preg_quote($value);
+				continue;
+			}
+
+			$this->tags[] = substr($symbol, 1);
+			$symbol = next($matches_symbol[0]);
+			$this->regex .= '(.+)';
+
+			if ($symbol === false) {
+				break;
+			}
+		}
+		$this->regex .= '/u';
 	}
 
 	public function get_last_songs($count = 0) {
@@ -122,6 +148,21 @@ class LastTrackRequest {
 
 	private function parse_title($title) {
 		$track = array();
-		return $title;
+		$m = array();
+		preg_match_all($this->regex, $title, $m);
+
+		$current_tag = reset($this->tags);
+
+		for($i = 1; $i < count($m); $i++) {
+			$value = $m[$i];
+			$track[$current_tag] = $value[0];
+			$current_tag = next($this->tags);
+
+			if ($current_tag === false) {
+				break;
+			}
+		}
+
+		return $track;
 	}
 }

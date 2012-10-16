@@ -1,5 +1,13 @@
 @CHARSET "UTF-8";
 
-.current_song {
+.current_song_artist, .current_song_track, .current_song_title, .last_songs_title {
 	font-weight: bold;
+}
+
+.current_song_artist, .last_song_artist {
+	text-transform: uppercase;
+}
+
+.current_song_track, .last_song_track {
+	text-transform: capitalize;
 }

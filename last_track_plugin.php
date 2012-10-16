@@ -42,7 +42,7 @@ class LastTrackPlugin {
 		LastTrackPlugin::$options[LastTrackPlugin::get_name_with_prefix('exclude')] =
 				get_option(LastTrackPlugin::get_name_with_prefix('exclude'), null);
 		LastTrackPlugin::$options[LastTrackPlugin::get_name_with_prefix('parse_format')] =
-			get_option(LastTrackPlugin::get_name_with_prefix('parse_format'), '%a - %t');
+			get_option(LastTrackPlugin::get_name_with_prefix('parse_format'), '%artist - %track');
 
 		LastTrackPlugin::$options[LastTrackPlugin::get_name_with_prefix('information')] =
 				get_option(LastTrackPlugin::get_name_with_prefix('information'),

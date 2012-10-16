@@ -21,7 +21,8 @@ class LastTrackWidget {
 				'password' => LastTrackPlugin::get_option('password'),
 				'connect_timeout' => LastTrackPlugin::get_option('connect_timeout'),
 				'timeout' => LastTrackPlugin::get_option('timeout'),
-				'exclude' => LastTrackPlugin::get_option('exclude'));
+				'exclude' => LastTrackPlugin::get_option('exclude'),
+				'parse_format' => LastTrackPlugin::get_option('parse_format'));
 
 		$information = LastTrackPlugin::get_option('information');
 		$information_message = LastTrackPlugin::get_option('information_message');
