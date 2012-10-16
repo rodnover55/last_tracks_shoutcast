@@ -60,6 +60,8 @@ class LastTrackWidget {
 		wp_enqueue_script("jquery");
 		wp_enqueue_script(LastTrackPlugin::get_name_with_prefix('widget_js'),
 				plugins_url('templates/js/widget.js', __FILE__), array('jquery'));
+		wp_enqueue_style(LastTrackPlugin::get_name_with_prefix('widget_css'),
+				plugins_url('templates/stylesheets/widget.css', __FILE__));
 
 		echo $after_widget;
 	}
