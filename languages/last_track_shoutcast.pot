@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Last tracks shoutcast\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-10-14 22:12+0600\n"
-"PO-Revision-Date: 2012-10-14 22:14+0600\n"
+"POT-Creation-Date: 2012-10-16 16:20+0600\n"
+"PO-Revision-Date: 2012-10-16 16:20+0600\n"
 "Last-Translator: rodnover <rodnover55@gmail.com>\n"
 "Language-Team: \n"
 "Language: \n"
@@ -19,56 +19,64 @@ msgid "General"
 msgstr ""
 
 #: /var/www/wp.localhost/wp-content/plugins/last_track_shoutcast/last_track_admin.php:13
+msgid "Parsing config"
+msgstr ""
+
+#: /var/www/wp.localhost/wp-content/plugins/last_track_shoutcast/last_track_admin.php:17
 msgid "Link"
 msgstr ""
 
-#: /var/www/wp.localhost/wp-content/plugins/last_track_shoutcast/last_track_admin.php:22
+#: /var/www/wp.localhost/wp-content/plugins/last_track_shoutcast/last_track_admin.php:26
 msgid "Use authrization"
 msgstr ""
 
-#: /var/www/wp.localhost/wp-content/plugins/last_track_shoutcast/last_track_admin.php:35
+#: /var/www/wp.localhost/wp-content/plugins/last_track_shoutcast/last_track_admin.php:39
 msgid "Login"
 msgstr ""
 
-#: /var/www/wp.localhost/wp-content/plugins/last_track_shoutcast/last_track_admin.php:43
+#: /var/www/wp.localhost/wp-content/plugins/last_track_shoutcast/last_track_admin.php:47
 msgid "Password"
 msgstr ""
 
-#: /var/www/wp.localhost/wp-content/plugins/last_track_shoutcast/last_track_admin.php:51
-msgid "Excludes"
-msgstr ""
-
-#: /var/www/wp.localhost/wp-content/plugins/last_track_shoutcast/last_track_admin.php:58
+#: /var/www/wp.localhost/wp-content/plugins/last_track_shoutcast/last_track_admin.php:55
 msgid "Connect timeout"
 msgstr ""
 
-#: /var/www/wp.localhost/wp-content/plugins/last_track_shoutcast/last_track_admin.php:65
+#: /var/www/wp.localhost/wp-content/plugins/last_track_shoutcast/last_track_admin.php:62
 msgid "Timeout"
 msgstr ""
 
-#: /var/www/wp.localhost/wp-content/plugins/last_track_shoutcast/last_track_admin.php:88
+#: /var/www/wp.localhost/wp-content/plugins/last_track_shoutcast/last_track_admin.php:69
+msgid "Parse format"
+msgstr ""
+
+#: /var/www/wp.localhost/wp-content/plugins/last_track_shoutcast/last_track_admin.php:76
+msgid "Excludes"
+msgstr ""
+
+#: /var/www/wp.localhost/wp-content/plugins/last_track_shoutcast/last_track_admin.php:102
 msgid "Last track shoutcast settings"
 msgstr ""
 
-#: /var/www/wp.localhost/wp-content/plugins/last_track_shoutcast/last_track_admin.php:89
+#: /var/www/wp.localhost/wp-content/plugins/last_track_shoutcast/last_track_admin.php:103
 msgid "Last tracks shoutcast"
 msgstr ""
 
-#: /var/www/wp.localhost/wp-content/plugins/last_track_shoutcast/last_track_request.php:43
+#: /var/www/wp.localhost/wp-content/plugins/last_track_shoutcast/last_track_request.php:70
 msgid "Cannot init curl."
 msgstr ""
 
-#: /var/www/wp.localhost/wp-content/plugins/last_track_shoutcast/last_track_request.php:61
+#: /var/www/wp.localhost/wp-content/plugins/last_track_shoutcast/last_track_request.php:88
 #, php-format
 msgid "Cannot set option '%s': %s"
 msgstr ""
 
-#: /var/www/wp.localhost/wp-content/plugins/last_track_shoutcast/last_track_request.php:70
+#: /var/www/wp.localhost/wp-content/plugins/last_track_shoutcast/last_track_request.php:97
 #, php-format
 msgid "Cannot exec curl: %s"
 msgstr ""
 
-#: /var/www/wp.localhost/wp-content/plugins/last_track_shoutcast/last_track_request.php:80
+#: /var/www/wp.localhost/wp-content/plugins/last_track_shoutcast/last_track_request.php:107
 msgid "Unauthorized."
 msgstr ""
 
@@ -77,43 +85,47 @@ msgstr ""
 msgid "Shoutcast last tracks"
 msgstr ""
 
-#: /var/www/wp.localhost/wp-content/plugins/last_track_shoutcast/last_track_widget.php:56
+#: /var/www/wp.localhost/wp-content/plugins/last_track_shoutcast/last_track_widget.php:87
 msgid "None"
 msgstr ""
 
-#: /var/www/wp.localhost/wp-content/plugins/last_track_shoutcast/last_track_widget.php:57
+#: /var/www/wp.localhost/wp-content/plugins/last_track_shoutcast/last_track_widget.php:88
 msgid "Specified message"
 msgstr ""
 
-#: /var/www/wp.localhost/wp-content/plugins/last_track_shoutcast/last_track_widget.php:59
+#: /var/www/wp.localhost/wp-content/plugins/last_track_shoutcast/last_track_widget.php:90
 msgid "Full"
 msgstr ""
 
-#: /var/www/wp.localhost/wp-content/plugins/last_track_shoutcast/last_track_widget.php:61
+#: /var/www/wp.localhost/wp-content/plugins/last_track_shoutcast/last_track_widget.php:92
 msgid "Error notification"
 msgstr ""
 
-#: /var/www/wp.localhost/wp-content/plugins/last_track_shoutcast/last_track_widget.php:64
+#: /var/www/wp.localhost/wp-content/plugins/last_track_shoutcast/last_track_widget.php:95
 msgid "Error message"
 msgstr ""
 
-#: /var/www/wp.localhost/wp-content/plugins/last_track_shoutcast/last_track_widget.php:67
+#: /var/www/wp.localhost/wp-content/plugins/last_track_shoutcast/last_track_widget.php:98
 msgid "Title"
 msgstr ""
 
-#: /var/www/wp.localhost/wp-content/plugins/last_track_shoutcast/last_track_widget.php:70
+#: /var/www/wp.localhost/wp-content/plugins/last_track_shoutcast/last_track_widget.php:101
 msgid "Current track title"
 msgstr ""
 
-#: /var/www/wp.localhost/wp-content/plugins/last_track_shoutcast/last_track_widget.php:73
+#: /var/www/wp.localhost/wp-content/plugins/last_track_shoutcast/last_track_widget.php:104
 msgid "Last tracks title"
 msgstr ""
 
-#: /var/www/wp.localhost/wp-content/plugins/last_track_shoutcast/last_track_widget.php:76
+#: /var/www/wp.localhost/wp-content/plugins/last_track_shoutcast/last_track_widget.php:107
 msgid "Count last songs"
 msgstr ""
 
-#: /var/www/wp.localhost/wp-content/plugins/last_track_shoutcast/templates/widget_page.php:16
+#: /var/www/wp.localhost/wp-content/plugins/last_track_shoutcast/last_track_widget.php:110
+msgid "Link to radio"
+msgstr ""
+
+#: /var/www/wp.localhost/wp-content/plugins/last_track_shoutcast/templates/widget_page.php:11
 msgid "Errors:"
 msgstr ""
 
