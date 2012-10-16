@@ -10,6 +10,7 @@ class LastTrackWidget {
 				LastTrackPlugin::domain()), array(__CLASS__, 'draw'));
 		wp_register_widget_control(LastTrackPlugin::PREFIX, __('Shoutcast last tracks',
 				LastTrackPlugin::domain()), array(__CLASS__, 'settings'));
+		add_action('wp_ajax_nopriv_' . LastTrackPlugin::PREFIX, array(__CLASS__, 'ajax'));
 		add_action('wp_ajax_' . LastTrackPlugin::PREFIX, array(__CLASS__, 'ajax'));
 	}
 
