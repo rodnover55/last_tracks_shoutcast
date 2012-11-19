@@ -1,24 +1,21 @@
+<div>
 <?php
   include_once "text_with_link.php";
   if (isset($songs['errors'])) {
   	switch ($information) {
   		case LastTrackPlugin::INFORMATION_MESSAGE:
   			echo $information_message;
-  			echo $after_widget;
   			break;
   		case LastTrackPlugin::INFORMATION_FULL:
           foreach($songs['errors'] as $error) { ?>
-            <div> <?php _e('Errors:', LastTrackPlugin::domain()) ?>
-            <?php echo $error; ?><br/>
-            </div>
-            <?php
+            <?php _e('Errors:', LastTrackPlugin::domain());
+              echo $error; ?><br/><?php
           }
           break;
     	}
     	return;
     }
     else {?>
-      <div>
         <div>
           <div class="current_song_title"><?php echo $current_song; ?></div>
             <?php
@@ -37,6 +34,6 @@
           } ?>
           </ul>
         </div>
-      </div>
       <?php
     }?>
+</div>
