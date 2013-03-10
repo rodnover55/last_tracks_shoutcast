@@ -23,6 +23,7 @@
                 "<div class='current_song_artist'>{$songs['current']['artist']}</div>"
                 . "<div class='current_song_track'>{$songs['current']['track']}</div>"); ?><br/>
         </div>
+        <?php if (isset($songs['lasts']) && is_array($songs['lasts'])) { ?>
         <div><div class="last_songs_title"><?php echo $last_songs; ?></div>
           <ul>
           <?php foreach ($songs['lasts'] as $song) { ?>
@@ -33,7 +34,8 @@
             <?php
           } ?>
           </ul>
-        </div>
+        </div><?php 
+        } ?>
       <?php
     }?>
 </div>
